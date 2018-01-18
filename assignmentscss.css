@@ -1,0 +1,26 @@
+#header1{
+	background-color: #04398e;
+	text-align: center;
+	color: white;
+	height: 75px;
+	margin-top: -20px;
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+#head1{
+	
+	height: 30%;
+}
+
+#link1{
+	color: white;
+}
+
+#link1:hover{
+	font-weight: bold;
+	color: red;
+}
+#link1:active{
+	color: yellow;
+}
