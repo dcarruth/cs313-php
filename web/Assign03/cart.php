@@ -43,7 +43,7 @@ session_start();
 				for ($i = 0; $i <= 7; $i++){
 					$time = $check . $i;
 					if (isset($_SESSION[$time])){
-						$src = "img" . $i . ".png";
+						$src = "img" . $i . ".PNG";
 						echo '<img src="' . $src . '" class="items img-rounded">';
 						echo '<button class="btn-default btn-lg" type="submit" name="remove" value="' . $i . '">Remove From Cart
 						' . $_SESSION[$time] . '</button><br/>';

@@ -38,7 +38,7 @@ $ssn = htmlspecialchars($_POST['ssn']);
 				for ($i = 0; $i <= 7; $i++){
 					$time = $check . $i;
 					if (isset($_SESSION[$time])){
-						$src = "img" . $i . ".png";
+						$src = "img" . $i . ".PNG";
 						echo '<img src="' . $src . '" class="items img-rounded">';
 					}
 				}
