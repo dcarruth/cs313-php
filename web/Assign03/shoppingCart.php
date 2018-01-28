@@ -38,35 +38,35 @@ session_start();
 		<div>
 			<form method="post" target="_self" action="shoppingCart.php">
 			<div>
-				<img class="items img-rounded" src="img0.png">
+				<img class="items img-rounded" src="img0.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="0">Add to Cart</button>
 			</div>
 			<div>
-				<img class="items img-rounded" src="img1.png">
+				<img class="items img-rounded" src="img1.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="1">Add to Cart</button>
 			</div>
 			<div>
-				<img class="items img-rounded" src="img2.png">
+				<img class="items img-rounded" src="img2.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="2">Add to Cart</button>
 			</div>
 			<div>
-				<img class="items img-rounded" src="img3.png">
+				<img class="items img-rounded" src="img3.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="3">Add to Cart</button>
 			</div>
 			<div>
-				<img class="items img-rounded" src="img4.png">
+				<img class="items img-rounded" src="img4.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="4">Add to Cart</button>
 			</div>
 			<div>
-				<img class="items img-rounded" src="img5.png">
+				<img class="items img-rounded" src="img5.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="5">Add to Cart</button>
 			</div>
 			<div>
-				<img class="items img-rounded" src="img7.png">
+				<img class="items img-rounded" src="img7.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="7">Add to Cart</button>
 			</div>
 			<div>
-				<img class="items img-rounded" src="img6.png">
+				<img class="items img-rounded" src="img6.png"/>
 				<button class="btn-default btn-lg" type="submit" name="watch" value="6">Add to Cart</button>
 			</div>
 		</div>
