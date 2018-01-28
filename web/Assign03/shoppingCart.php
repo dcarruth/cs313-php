@@ -38,7 +38,7 @@ session_start();
 		<div>
 			<form method="post" target="_self" action="shoppingCart.php">
 			<div>
-				<img class="items img-rounded" src="../Assign03/img0.png">
+				<img class="items img-rounded" src="img0.png">
 				<button class="btn-default btn-lg" type="submit" name="watch" value="0">Add to Cart</button>
 			</div>
 			<div>
