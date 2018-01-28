@@ -1,0 +1,53 @@
+.items{
+	height: 30%;
+	width: 20%;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	margin-left: 5%;
+	margin-right: 10px;
+}
+
+#header1{
+	background-color: gray;
+	text-align: center;
+	color: white;
+	height: 75px;
+	width: auto;
+	border-radius: 60px;
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+
+.links{
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #ffffff;
+
+}
+
+.lab{
+	margin-top: 15px;
+	margin-left: 38%;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 18px;
+
+}
+
+.lab2{
+	color: black;
+	margin-left: 38%;
+	margin-top: -10px;
+}
+
+#rene{
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.but{
+	margin-left: 38%;
+}
+

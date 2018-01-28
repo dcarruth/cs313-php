@@ -1,0 +1,17 @@
+#header{
+	width: 80%;
+	height: 120px;
+	background-color: #42f4ee;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	text-align: center;
+}
+
+body{
+	text-align: center;
+}
+
+.highlight{
+	background-color: red;
+}
