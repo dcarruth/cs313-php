@@ -24,7 +24,7 @@ $dbPort = $dbopts["port"];
 $dbUser = $dbopts["user"];
 $dbPassword = $dbopts["pass"];
 $dbName = ltrim($dbopts["path"],'/');
-
+echo "pgsql:host=$dbHost;port=$dbPort;dbname=$dbName" . $dbUser . $dbPassword;
 $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 }
 ?>
@@ -41,8 +41,8 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 	<body id="bcground" background="bcground.jpeg">
 		<table style="width:50%">
 			<tr>
-				<td><img class="bldg img-thumbnail" src="Campus_pictures/austin.JPG"><div class="caption">Austin Building</div></td> 
-				<td><img class="bldg img-thumbnail" src="Campus_pictures/STC.JPG"><div class="caption">Science and Technology Center</div></td> 
+				<td><img class="bldg img-thumbnail" src="Campus_pictures/austin.jpg"><div class="caption">Austin Building</div></td> 
+				<td><img class="bldg img-thumbnail" src="Campus_pictures/STC.jpg"><div class="caption">Science and Technology Center</div></td> 
 				<?php
 				foreach ($myPDO->query('SELECT buildingid, path FROM _building') as $row)
 				{ 
