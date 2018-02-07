@@ -3,7 +3,7 @@ session_start();
 
 try {
 	$dbUrl = getenv('DATABASE_URL');
-	if (empty($dburl)){
+	if (empty($dbUrl)){
 		$user = 'php';
 		$password = 'php_1177';
 		$myPDO = new PDO('pgsql:host=localhost;dbname=SpiritTracker', $user, $password);
