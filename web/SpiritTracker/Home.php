@@ -12,7 +12,7 @@ try {
 		$dbopts = parse_url($dbUrl);
 
 		$dbHost = $dbopts["host"];
-		$dbPort = 8080;
+		$dbPort = '8080';
 		$dbUser = $dbopts["user"];
 		$dbPassword = $dbopts["pass"];
 		$dbName = ltrim($dbopts["path"],'/');
