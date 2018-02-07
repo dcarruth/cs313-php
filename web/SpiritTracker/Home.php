@@ -20,7 +20,7 @@ try {
 }
 	
 catch (PDOException $ex){
-	echo 'Failed to open database! Please try again later.';
+	echo 'Failed to open database! Please try again later.' . $ex;
 	die();
 }
 
