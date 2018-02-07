@@ -11,7 +11,7 @@ try {
 	else {
 		$dbopts = parse_url($dbUrl);
 
-		$dbHost = "127.0.0.1";
+		$dbHost = "localhost";
 		$dbPort = $dbopts["port"];
 		$dbUser = $dbopts["user"];
 		$dbPassword = $dbopts["pass"];
