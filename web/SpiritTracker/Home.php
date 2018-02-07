@@ -43,7 +43,7 @@ catch (PDOException $ex){
 				foreach ($myPDO->query('SELECT buildingid, path FROM _building ORDER BY buildingid') as $row)
 				{ 
 					$i++;
-					echo '<div class="contain"><img class="img-thumbnail bldg" src="Campus_Pictures/' . $row['path'] . '.JPG"></div>';
+					echo '<div class="contain"><img class="img-thumbnail bldg" src="Campus_Pictures/' . $row['path'] . '.jpg"></div>';
 					if ($i % 4 == 0 and $i != 0)
 						echo '<br/>';
 				}
