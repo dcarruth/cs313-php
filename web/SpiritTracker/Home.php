@@ -2,7 +2,7 @@
 session_start();
 
 try {
-	$dburl = getenv('DATABASE_URL');
+	$dbUrl = getenv('DATABASE_URL');
 	if (empty($dburl)){
 		$user = 'php';
 		$password = 'php_1177';
@@ -10,12 +10,13 @@ try {
 	}
 	else {
 		$dbopts = parse_url($dbUrl);
+
 		$dbHost = $dbopts["host"];
 		$dbPort = $dbopts["port"];
 		$dbUser = $dbopts["user"];
 		$dbPassword = $dbopts["pass"];
 		$dbName = ltrim($dbopts["path"],'/');
-		echo "<h1> $dbopts </h1><br/>";
+
 		$myPDO = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 	}
 }
