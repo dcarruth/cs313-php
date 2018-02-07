@@ -2,10 +2,23 @@
 session_start();
 
 try {
-	$user = 'postgres';
-	$password = '0117729';
-	$myPDO = new PDO('pgsql:host=localhost;dbname=SpiritTracker', $user, $password);
+	$dburl = getenv('DATABASE_URL');
+	if (empty($dburl)){
+		$user = 'php';
+		$password = 'php_1177';
+		$myPDO = new PDO('pgsql:host=localhost;dbname=SpiritTracker', $user, $password);
+	}
+	else {
+		$dbopts = parse_url($dbUrl);
+		$dbHost = $dbopts["host"];
+		$dbPort = $dbopts["port"];
+		$dbUser = $dbopts["user"];
+		$dbPassword = $dbopts["pass"];
+		$dbName = ltrim($dbopts["path"],'/');
+		$myPDO = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+	}
 }
+	
 catch (PDOException $ex){
 	echo 'Failed to open database! Please try again later.';
 	die();
@@ -23,18 +36,16 @@ catch (PDOException $ex){
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body id="bcground" background="bcground.jpeg">
-		<table style="width:50%">
-			<tr>
-				<td><img class="bldg img-thumbnail" src="Campus_Pictures/austin.JPG"><div class="caption">Austin Building</div></td> 
-				<td><img class="bldg img-thumbnail" src="Campus_Pictures/STC.JPG"><div class="caption">Science and Technology Center</div></td> 
 				<?php
-				foreach ($myPDO->query('SELECT buildingid, path FROM _building') as $row)
+				$i = 0;
+				foreach ($myPDO->query('SELECT buildingid, path FROM _building ORDER BY buildingid') as $row)
 				{ 
-					echo '<img class="bldg img-thumbnail" src="Campus_Pictures/' . $row['path'] . '.JPG">';
-					echo '<br/>';	
+					$i++;
+					echo '<td><img class="img-thumbnail bldg" src="Campus_Pictures/' . $row['path'] . '.JPG"></td>';
+					if ($i % 3 == 0 and $i != 0)
+						echo '<br/>';
 				}
 				?>
-			</tr>
 		</table>
 	</body>
 </html>
