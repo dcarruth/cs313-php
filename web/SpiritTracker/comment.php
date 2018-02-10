@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['buildingid'] = $_GET['id'];
 
 try {
 	
@@ -21,18 +22,17 @@ try {
 		$myPDO = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 	}
 }
-	
 catch (PDOException $ex){
 	echo 'Failed to open database! Please try again later.' . $ex;
 	die();
 }
 
-?>
 
+?>
 
 <html>
 	<head>
-		<title> Spiritual Experience Tracker </title>
+		<title> Comments </title>
 		<link href="ST.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -41,29 +41,26 @@ catch (PDOException $ex){
 	<body id="bcground" background="bcground.jpeg">
 		<div id="header1">
 			<h3> Welcome: 
-			<?php 
-			$usr = $_POST['username1'];
-			$scrn = $myPDO->query("SELECT screenname, userid FROM _user WHERE username = '$usr'");
-			$name = $scrn->fetch();
-			$_SESSION['userid'] = $name['userid'];
-			$_SESSION['screeName'] = $name['screenname'];
-			
-			echo $name['screenname'];
-			?> 
-			<h4> Please select a building </h4><br/></h3>
+			<?php
+			echo $_SESSION['screeName'];
+			?>
+			</h3>
 		</div>
-				<?php
-				$i = 0;
-				foreach ($myPDO->query('SELECT buildingid, path FROM _building ORDER BY buildingid') as $row)
-				{ 
-					$i++;
-					echo '<a href="building.php?id=' . $row['buildingid'] .'">';
-					echo '<div class="contain"><img id="'.$row['buildingid'].'" class="img-thumbnail bldg" src="Campus_Pictures/' . $row['path'] . '.jpg"></div>';
-					echo '</a>';
-					if ($i % 4 == 0 and $i != 0)
-						echo '<br/>';
+			<?php
+				$post = $_GET['id'];
+				echo '<div class="contain"></div>';
+				echo '<div class="contain post">';
+				
+				foreach ($myPDO->query("SELECT postid, commentuserid, comment FROM _comment WHERE postid = '$post'") as $row)
+				{ 	
+					$usr = $row['commentuserid'];
+					$scrn = $myPDO->query("SELECT screenname FROM _user WHERE userid = '$usr'");
+					$name = $scrn->fetch();
+					echo '<h3>' . $name['screenname'] . '</h3>';
+					echo $row['comment'];		
 				}
-				?>
+				echo '</div>';		
+			?>
 	</body>
 </html>
 

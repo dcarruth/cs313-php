@@ -8,6 +8,7 @@
 	width:  500px;
 }
 
+
 .contain{
 	display: table-cell;
 	padding-left: 20px;
@@ -21,16 +22,30 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10%;
+	margin-bottom: -50px;
 	height: 50%;
-	width: 25%;
+	width: 20%;
 	background-color: gray;
-	opacity: .75;
+	opacity: .85;
 	border-radius: 15px;
 }
 
+.post{
+	margin-left: 10px;
+	margin-right: 10px;
+	height: auto;
+	background-color: gray;
+	opacity: .75;
+	border-radius: 15px;
+	color: white;
+}
+
+
 .forms{
-	margin-left: 25%;
+	margin-left: 20%;
 	margin-right: auto;
+	margin-top: 15px;
+	display: block;
 }
 
 #header1{
@@ -43,5 +58,22 @@
 	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
+	margin-bottom: 10px;
 	opacity: .85;
+}
+
+#create1{
+	margin-left: 20%;
+}
+
+.title1{
+	margin-bottom: -1px;
+}
+
+#createacc{
+	visibility: hidden;
+}
+
+#comm{
+	color: red;
 }
