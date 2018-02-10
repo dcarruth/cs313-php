@@ -1,5 +1,31 @@
-<? php
+<?php
 session_start();
+
+try {
+	
+	$dbUrl = getenv('DATABASE_URL');
+	if (empty($dbUrl)){
+		$user = 'php';
+		$password = 'php_1177';
+		$myPDO = new PDO('pgsql:host=localhost;dbname=SpiritTracker', $user, $password);
+	}
+	else {
+		$dbopts = parse_url($dbUrl);
+
+		$dbHost = $dbopts["host"];
+		$dbPort = $dbopts["port"];
+		$dbUser = $dbopts["user"];
+		$dbPassword = $dbopts["pass"];
+		$dbName = ltrim($dbopts["path"],'/');
+
+		$myPDO = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+	}
+}
+	
+catch (PDOException $ex){
+	echo 'Failed to open database! Please try again later.' . $ex;
+	die();
+}
 
 ?>
 
@@ -43,3 +69,7 @@ function create(){
 		</div>
 	</body>
 </html>
+
+<?php
+	mysql_close($myPDO);
+?>
