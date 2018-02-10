@@ -12,7 +12,7 @@ function create(){
 
 <html>
 	<head>
-		<title> Login </title>
+		<title> Login or Create </title>
 		<link href="ST.css" rel="stylesheet">
 	</head>
 	<body id="bcground" background="bcground.jpeg">
