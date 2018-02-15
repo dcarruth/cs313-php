@@ -33,7 +33,7 @@ catch (PDOException $ex){
 if (isset($_POST['screenName'])){
 
 	$usr = $_POST['username2'];
-	$pass = $_POST['password'];
+	$pass = $_POST['password2'];
 	$scrn = $_POST['screenName'];
 	$_SESSION['screen'] = $_POST['screenName'];
 	
@@ -56,7 +56,23 @@ if (isset($_POST['screenName'])){
 } 
 
 if (isset($_POST['username1'])) {
-	echo "<h1>" . $_POST['username1'] . "     " . $_POST['password1'] . "</h1>";	
+	
+	$usr = $_POST['username1'];
+	$pass = $_POST['password1'];
+	
+	$cred = $myPDO->prepare('SELECT username, password, screenname FROM _user WHERE username = :usr');
+	$cred->bindValue(':usr',$usr);
+	$cred->execute();
+	$creds = $cred->fetch();
+	
+	if ($pass == $creds['password'])
+	{
+		echo "<h1>It Worked</h1>";
+	}
+	else
+	{
+		echo "<h1>It DIDNT Worked</h1>";
+	}
 }
 
 ?>
