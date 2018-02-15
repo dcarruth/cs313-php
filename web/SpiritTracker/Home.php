@@ -48,7 +48,7 @@ catch (PDOException $ex){
 			$_SESSION['userid'] = $name['userid'];
 			$_SESSION['screeName'] = $name['screenname'];
 			
-			echo $name['screenname'];
+			echo $_SESSION['screen'];
 			?> 
 			<h4> Please select a building </h4><br/></h3>
 		</div>
