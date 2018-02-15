@@ -37,28 +37,22 @@ if (isset($_POST['screenName'])){
 	$scrn = $_POST['screenName'];
 	$_SESSION['screen'] = $_POST['screenName'];
 	
-	try {
-		
-		$query = 'INSERT INTO _user (userName, password, screenName) VALUES(:usr, :pass, :scrn)';
-		$statement = $myPDO->prepare($query);
 	
-		$statement->bindValue(':usr', $usr);
-		$statement->bindValue(':pass', $pass);
-		$statement->bindValue(':scrn', $scrn);
-		if ($statement->execute()){
-			header('Location: Home.php');
-			$usrID = $myPDO->lastInsertId("_user_userID_seq");
-		}
-		else {
-			echo "<h1> HELP </h1>";
-		}
+	$query = 'INSERT INTO _user (userName, password, screenName) VALUES(:usr, :pass, :scrn)';
+	$statement = $myPDO->prepare($query);
+	
+	$statement->bindValue(':usr', $usr);
+	$statement->bindValue(':pass', $pass);
+	$statement->bindValue(':scrn', $scrn);
+	
+	if ($statement->execute()){
+		header('Location: Home.php');
+		$usrID = $myPDO->lastInsertId("_user_userID_seq");
+	}
+	else {
+		echo "<h1> HELP </h1>";
+	}
 		
-	}
-	catch (Exception $ex)
-	{
-	echo "Error with DB. Details: $ex";
-	die();
-	}
 } 
 
 if (isset($_POST['username1'])) {
