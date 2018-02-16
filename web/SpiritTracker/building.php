@@ -27,6 +27,28 @@ catch (PDOException $ex){
 	die();
 }
 
+if (isset($_POST['postText'])){
+	$bld = $_GET['id'];
+	$txt = $_POST['postText'];
+	$usrid = $_SESSION['userid'];
+	
+	if (isset($_POST['prv'])){
+		$prv = 'true';
+		unset($_POST['prv']);
+	}
+	else {
+		$prv = 'false';
+	}
+	
+	$query = "INSERT INTO _post (posteduserid, buildingid, post, private) VALUES (:usrid, :bld, :txt, '$prv')";
+	$stm = $myPDO->prepare($query);
+	
+	$stm->bindValue(':usrid', $usrid);
+	$stm->bindValue(':bld', $bld);
+	$stm->bindValue(':txt', $txt);
+	$varr = $stm->execute();
+	unset($_POST['postText']);
+}
 
 ?>
 
@@ -42,7 +64,7 @@ catch (PDOException $ex){
 		<div id="header1">
 			<h3> Welcome: 
 			<?php
-			echo $_SESSION['screeName'];
+			echo $_SESSION['screen'];
 			?>
 			</h3>
 		</div>
@@ -86,6 +108,16 @@ catch (PDOException $ex){
 					echo '</div>';
 				}
 			?>
+			<div class="contain">
+				<div class="contain post">
+					<h3>New Post</h3>
+					<form class="createpost" method="POST" target="_SELF" action="building.php?id=<?php echo $i;?>">
+						<textarea rows="4" cols="50" name="postText">Enter post...</textarea>
+						<input type="checkbox" name="prv" value="Private">Private Post<br/>
+						<input type="submit" value="Post">
+					</form>
+ 				</div>
+			</div>
 	</body>
 </html>
 

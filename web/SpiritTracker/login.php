@@ -2,17 +2,12 @@
 session_start();
 ?>
 
-<script>
-function create(){
-	create = document.getElementById('createacc');
-	create.style.visibility = "visible";
-}
-</script>
 
 <html>
 	<head>
 		<title> Login or Create </title>
 		<link href="ST.css" rel="stylesheet">
+		<script src="ST.js"></script>
 	</head>
 	<body id="bcground" background="bcground.jpeg">
 		<div class="loginBox">
@@ -25,6 +20,28 @@ function create(){
 				<input class="field" type="text" name="password1"><br/><br/>
 				<input class="field" type="submit" value="Login">
 				</form>
+				<h3 id="warn"> 
+				<?php
+					if (isset($_GET['status'])){
+						$num = $_GET['status'];
+						switch($num){
+						
+							case 0:
+								echo "Username already taken!";
+								break;
+							case 1:
+								echo "INVALID PASSWORD!";
+								break;
+							case 2:
+								echo "USERNAME NOT FOUND! Please create a new account!";
+								break;
+							default:
+								echo "Server Error: Please try again later.";
+						}
+						
+					}
+				?>	
+				</h3>	
 			</div>
 			<a id="create1" href="#" onclick="create()">Create Account</a>
 		</div>

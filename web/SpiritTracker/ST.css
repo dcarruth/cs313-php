@@ -81,3 +81,16 @@
 .field{
 	width: 75%;
 }
+
+#warn {
+	color: #c90e20;
+}
+
+.createpost{
+	color: black;
+}
+
+#txt{
+	height: 100px;
+	width: 100%;
+}

@@ -41,13 +41,7 @@ catch (PDOException $ex){
 	<body id="bcground" background="bcground.jpeg">
 		<div id="header1">
 			<h3> Welcome: 
-			<?php 
-			$usr = $_POST['username1'];
-			$scrn = $myPDO->query("SELECT screenname, userid FROM _user WHERE username = '$usr'");
-			$name = $scrn->fetch();
-			$_SESSION['userid'] = $name['userid'];
-			$_SESSION['screeName'] = $name['screenname'];
-			
+			<?php 			
 			echo $_SESSION['screen'];
 			?> 
 			<h4> Please select a building </h4><br/></h3>

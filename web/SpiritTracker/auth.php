@@ -46,11 +46,13 @@ if (isset($_POST['screenName'])){
 	$statement->bindValue(':scrn', $scrn);
 	
 	if ($statement->execute()){
+		
+		$_SESSION['userid'] = $myPDO->lastInsertId("_user_userID_seq");
 		header('Location: Home.php');
-		$usrID = $myPDO->lastInsertId("_user_userID_seq");
 	}
-	else {
-		echo "<h1> HELP </h1>";
+	else 
+	{
+		header('Location: login.php?status=0');
 	}
 		
 } 
@@ -60,18 +62,28 @@ if (isset($_POST['username1'])) {
 	$usr = $_POST['username1'];
 	$pass = $_POST['password1'];
 	
-	$cred = $myPDO->prepare('SELECT username, password, screenname FROM _user WHERE username = :usr');
+	$cred = $myPDO->prepare('SELECT userid, username, password, screenname FROM _user WHERE username = :usr');
 	$cred->bindValue(':usr',$usr);
 	$cred->execute();
 	$creds = $cred->fetch();
 	
-	if ($pass == $creds['password'])
-	{
-		echo "<h1>It Worked</h1>";
+	if (!empty($creds)){
+		
+		if ($pass == $creds['password'])
+		{
+			$_SESSION['userid'] = $creds['userid'];
+			$_SESSION['screen'] = $creds['screenname'];
+			header('Location: Home.php');
+		}
+		else
+		{
+			header('Location: login.php?status=1');
+		}
+
 	}
 	else
 	{
-		echo "<h1>It DIDNT Worked</h1>";
+		header('Location: login.php?status=2');
 	}
 }
 

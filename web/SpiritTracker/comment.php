@@ -42,7 +42,7 @@ catch (PDOException $ex){
 		<div id="header1">
 			<h3> Welcome: 
 			<?php
-			echo $_SESSION['screeName'];
+			echo $_SESSION['screen'];
 			?>
 			</h3>
 		</div>
