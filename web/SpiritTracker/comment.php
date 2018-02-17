@@ -28,6 +28,25 @@ catch (PDOException $ex){
 }
 
 
+if (isset($_POST['postText'])){
+	$pst = $_GET['id'];
+	$txt = $_POST['postText'];
+	$usrid = $_SESSION['userid'];
+	var_dump($pst);
+	var_dump($txt);
+	var_dump($usrid);
+	$query = "INSERT INTO _comment (postid, comment, commentUserID) VALUES (:pst, :txt, :usrid)";
+	$stm = $myPDO->prepare($query);
+	
+	$stm->bindValue(':pst', $pst);
+	$stm->bindValue(':txt', $txt);
+	$stm->bindValue(':usrid', $usrid);
+	$varr = $stm->execute();
+	unset($_POST['postText']);
+}
+
+?>
+
 ?>
 
 <html>
@@ -61,6 +80,15 @@ catch (PDOException $ex){
 				}
 				echo '</div>';		
 			?>
+			<div class="contain">
+				<div class="contain post">
+					<h3>New Post</h3>
+					<form class="createpost" method="POST" target="_SELF" action="comment.php?id=<?php echo $post;?>">
+						<textarea rows="4" cols="50" name="postText">Enter comment...</textarea><br/>
+						<input type="submit" value="Post">
+					</form>
+ 				</div>
+			</div>
 	</body>
 </html>
 

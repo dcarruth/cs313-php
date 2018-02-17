@@ -17,7 +17,7 @@ session_start();
 				<h4 class="title1">Username</h4>
 				<input class="field" type="text" name="username1"><br/>
 				<h4 class="title1">Password</h4>
-				<input class="field" type="text" name="password1"><br/><br/>
+				<input class="field" type="password" name="password1"><br/><br/>
 				<input class="field" type="submit" value="Login">
 				</form>
 				<h3 id="warn"> 
@@ -52,7 +52,7 @@ session_start();
 				<h4 class="title1">Username</h4>
 				<input class="field" type="text" name="username2"><br/>
 				<h4 class="title1">Password</h4>
-				<input class="field" type="text" name="password2"><br/>
+				<input class="field" type="password" name="password2"><br/>
 				<h4 class="title1">Screen Name</h4>
 				<input class="field" type="text" name="screenName"><br/><br/>
 				<input class="field" type="submit" value="Create Account">
