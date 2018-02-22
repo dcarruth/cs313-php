@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (isset($_SESSION['userid']))
+	{
+		header('Location: Home.php');
+		die();
+	}
 ?>
 
 
@@ -30,10 +36,10 @@ session_start();
 								echo "Username already taken!";
 								break;
 							case 1:
-								echo "INVALID PASSWORD!";
+								echo "INVALID CREDENTIALS!";
 								break;
 							case 2:
-								echo "USERNAME NOT FOUND! Please create a new account!";
+								echo "INVALID CREDENTIALS!";
 								break;
 							default:
 								echo "Server Error: Please try again later.";

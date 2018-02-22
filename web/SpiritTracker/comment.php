@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['userid']))
+	{
+		header('Location: login.php');
+		die();
+	}
+	
 $_SESSION['buildingid'] = $_GET['id'];
 
 try {
@@ -25,6 +32,7 @@ try {
 catch (PDOException $ex){
 	echo 'Failed to open database! Please try again later.' . $ex;
 	die();
+	
 }
 
 
@@ -32,9 +40,7 @@ if (isset($_POST['postText'])){
 	$pst = $_GET['id'];
 	$txt = $_POST['postText'];
 	$usrid = $_SESSION['userid'];
-	var_dump($pst);
-	var_dump($txt);
-	var_dump($usrid);
+
 	$query = "INSERT INTO _comment (postid, comment, commentUserID) VALUES (:pst, :txt, :usrid)";
 	$stm = $myPDO->prepare($query);
 	
@@ -64,6 +70,8 @@ if (isset($_POST['postText'])){
 			echo $_SESSION['screen'];
 			?>
 			</h3>
+			<a class="link" href="logout.php">Logout</a>  
+			<a class="link" href="Home.php">Home</a> 
 		</div>
 			<?php
 				$post = $_GET['id'];

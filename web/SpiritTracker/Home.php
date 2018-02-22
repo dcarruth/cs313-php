@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+
+	if (!isset($_SESSION['userid']))
+	{
+		header('Location: login.php');
+		die();
+	}
+	
 try {
 	
 	$dbUrl = getenv('DATABASE_URL');
@@ -25,6 +32,7 @@ try {
 catch (PDOException $ex){
 	echo 'Failed to open database! Please try again later.' . $ex;
 	die();
+
 }
 
 ?>
@@ -44,15 +52,21 @@ catch (PDOException $ex){
 			<?php 			
 			echo $_SESSION['screen'];
 			?> 
-			<h4> Please select a building </h4><br/></h3>
+			<h4> Please select a building <a class="link" href="logout.php">Logout</a></h4><br/></h3>
 		</div>
 				<?php
 				$i = 0;
-				foreach ($myPDO->query('SELECT buildingid, path FROM _building ORDER BY buildingid') as $row)
+				foreach ($myPDO->query('SELECT buildingid, path, name FROM _building ORDER BY buildingid') as $row)
 				{ 
 					$i++;
 					echo '<a href="building.php?id=' . $row['buildingid'] .'">';
-					echo '<div class="contain"><img id="'.$row['buildingid'].'" class="img-thumbnail bldg" src="Campus_Pictures/' . $row['path'] . '.jpg"></div>';
+					echo '<div class="contain">
+					<img id="'.$row['buildingid'].'" class="img-thumbnail bldg" src="Campus_Pictures/' . $row['path'] . '.jpg">
+					<div class="overlay">
+					<div class="text">' . $row['name'] . '
+					</div>
+					</div>
+					</div>';
 					echo '</a>';
 					if ($i % 4 == 0 and $i != 0)
 						echo '<br/>';

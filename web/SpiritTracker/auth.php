@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+	
 try {
 	
 	$dbUrl = getenv('DATABASE_URL');
@@ -25,6 +26,8 @@ try {
 catch (PDOException $ex){
 	echo 'Failed to open database! Please try again later.' . $ex;
 	die();
+	
+
 }
 ?>
 
@@ -34,6 +37,7 @@ if (isset($_POST['screenName'])){
 
 	$usr = $_POST['username2'];
 	$pass = $_POST['password2'];
+	$passs = password_hash($pass, PASSWORD_DEFAULT);
 	$scrn = $_POST['screenName'];
 	$_SESSION['screen'] = $_POST['screenName'];
 	
@@ -42,7 +46,7 @@ if (isset($_POST['screenName'])){
 	$statement = $myPDO->prepare($query);
 	
 	$statement->bindValue(':usr', $usr);
-	$statement->bindValue(':pass', $pass);
+	$statement->bindValue(':pass', $passs);
 	$statement->bindValue(':scrn', $scrn);
 	
 	if ($statement->execute()){
@@ -61,7 +65,6 @@ if (isset($_POST['username1'])) {
 	
 	$usr = $_POST['username1'];
 	$pass = $_POST['password1'];
-	
 	$cred = $myPDO->prepare('SELECT userid, username, password, screenname FROM _user WHERE username = :usr');
 	$cred->bindValue(':usr',$usr);
 	$cred->execute();
@@ -69,7 +72,7 @@ if (isset($_POST['username1'])) {
 	
 	if (!empty($creds)){
 		
-		if ($pass == $creds['password'])
+		if (password_verify($pass,$creds['password']))
 		{
 			$_SESSION['userid'] = $creds['userid'];
 			$_SESSION['screen'] = $creds['screenname'];
