@@ -21,10 +21,10 @@ if (isset($_SESSION['userid']))
 				<br/>
 				<form method="POST" target="_self" action="auth.php">
 				<h4 class="title1">Username</h4>
-				<input class="field" type="text" name="username1"><br/>
+				<input id ="uname" class="field" type="text" name="username1"><br/>
 				<h4 class="title1">Password</h4>
-				<input class="field" type="password" name="password1"><br/><br/>
-				<input class="field" type="submit" value="Login">
+				<input id="passwd" class="field" type="password" name="password1"><br/><br/>
+				<input class="field" type="submit" onclick="return loginValidate() "value="Login">
 				</form>
 				<h3 id="warn"> 
 				<?php
@@ -56,12 +56,12 @@ if (isset($_SESSION['userid']))
 				<br/>
 				<form method="POST" target="_self" action="auth.php">
 				<h4 class="title1">Username</h4>
-				<input class="field" type="text" name="username2"><br/>
+				<input id="unameNew" class="field" type="text" name="username2"><br/>
 				<h4 class="title1">Password</h4>
-				<input class="field" type="password" name="password2"><br/>
+				<input id="passwdNew" class="field" type="password" name="password2"><br/>
 				<h4 class="title1">Screen Name</h4>
-				<input class="field" type="text" name="screenName"><br/><br/>
-				<input class="field" type="submit" value="Create Account">
+				<input id="screenN" class="field" type="text" name="screenName"><br/><br/>
+				<input class="field" type="submit" onclick="return createValidate()" value="Create Account">
 				</form>
 			</div>
 		</div>
